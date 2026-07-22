@@ -80,6 +80,11 @@ export async function updateConversation(
     revalidatePath(`/c/${conversationId}`);
     return conversation;
   }
+
+  export async function getConversation(conversationId: string) {
+    const user = await requireUser();
+    return assertOwnsConversation(conversationId, user.id);
+  }
   
 
 
